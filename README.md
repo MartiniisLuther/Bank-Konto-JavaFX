@@ -40,6 +40,12 @@ Bank_Konto/
 └── README.md
 ```
 
+## homepage_preview
+
+![Homepage preview](screenshots/initial_preview.png)
+
+_Initial dashboard/homepage preview._
+
 ## Technologies
 - JavaFX  
 - FXML  
