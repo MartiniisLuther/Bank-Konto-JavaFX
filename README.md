@@ -42,7 +42,7 @@ Bank_Konto/
 
 ## homepage_preview
 
-![Homepage preview](screenshots/initial_preview.png)
+![Homepage preview](resources/screenshots/initial_preview.png)
 
 _Initial dashboard/homepage preview._
 
