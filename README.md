@@ -32,19 +32,22 @@ Bank_Konto/
 │       └── Transaction.java
 ├── resources/
 │   ├── css/
-│   │   └── dashboard.css
+│   │   ├── dashboard.css
+│   │   └── transactionPane.css
 │   ├── fxml/
 │   │   └── dashboard.fxml
 │   ├── img/
 │   └── screenshots/
+│       ├── initial_preview.png
+│       └── transactions_details.png
 └── README.md
 ```
 
-## homepage_preview
+## Previews
 
-![Homepage preview](resources/screenshots/initial_preview.png)
-
-_Initial dashboard/homepage preview._
+| ![Homepage preview](resources/screenshots/initial_preview.png) | ![Transaction details](resources/screenshots/transactions_details.png) |
+|---|---|
+| _Initial dashboard/homepage preview._ | _Transaction details screenshot._ |
 
 ## Technologies
 - JavaFX  
