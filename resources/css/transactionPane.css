@@ -1,0 +1,134 @@
+/* Overlay dim background */
+.overlay-pane {
+    -fx-alignment: CENTER;
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+    -fx-pref-width: 100%;
+    -fx-pref-height: 100%;
+    -fx-background-radius: 10;
+}
+
+/* animate */
+.overlay-pane {
+	-fx-translate-y: 0;
+	-fx-opacity: 1;
+	-fx-transition: all 0.3s ease-out;
+}
+
+/* Details card */
+.details-container {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-padding: 30;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 25, 0, 0, 10);
+    -fx-max-width: 400;
+    -fx-alignment: center;
+}
+
+/* Header bar Card */
+.details-header-bar {
+    -fx-alignment: CENTER_LEFT;
+}
+
+.details-header-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #222;
+}
+
+/* Top Close button */
+.close-btn {
+ 	-fx-background-color: transparent;
+    -fx-font-size: 20px;
+    -fx-cursor: hand;
+    -fx-padding: 10px;
+    -fx-text-fill: #C41E3A;
+    -fx-font-weight: bold;
+}
+.close-btn:hover {
+    -fx-text-fill: #ff4444;
+}
+
+/* Merchant info card */
+.transaction-summary {
+    -fx-spacing: 5;
+}
+
+/* merchant title */
+.transaction-merchant {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e1e1e;
+    -fx-text-fill: #0047AB;
+    -fx-cursor: text;
+}
+
+/* transaction reference/category */
+.transaction-ref {
+    -fx-font-size: 13px;
+    -fx-text-fill: #666;
+    -fx-cursor: text;
+}
+
+/* merchant amount */
+.amount-added {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3fbf00; /* green for income */
+    -fx-cursor: text;
+}
+
+.amount-charged {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #DE3163; /* red for spending */
+    -fx-cursor: text;
+}
+
+/* Card with table-like details */
+.transaction-info {
+	-fx-background-radius: 10;
+	-fx-padding: 15 20;
+	-fx-background-color: rgb(0, 0, 0, 0.1);
+}
+
+/* Table-like Card details */
+.details-title {
+    -fx-text-fill: #777;
+    -fx-font-size: 13px;
+    -fx-cursor: text;
+}
+
+.details-value {
+    -fx-text-fill: #222;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-cursor: text;
+}
+
+/* close button */
+.primary-btn {
+    -fx-background-color: linear-gradient(to right, #7a5af5, #5561ff);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 8 25 8 25;
+    -fx-cursor: hand;
+}
+
+.primary-btn:hover {
+	-fx-background-color: linear-gradient(to right, #6a4af0, #4551e5);
+}
+
+/* report button */
+.secondary-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: #aaa;
+    -fx-border-radius: 10;
+    -fx-text-fill: #444;
+    -fx-padding: 8 25 8 25;
+    -fx-cursor: hand;
+}
+
+.details-actions {
+    -fx-padding: 15 0 0 0;
+}

@@ -5,3 +5,6 @@
 bin/
 build.fxbuild
 
+#Ignore temporary run argument files
+.temp-KontoMain-args-*.txt
+

@@ -1,10 +1,10 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-/*@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap'); */
 
 /* applies to all */
 #rootPane {
-	/*-fx-font-family: Tektur; */
+	-fx-font-family: Tektur;
 	-fx-font-family: "Agency FB", "Bahnschrift", sans-serif;
 	/*-fx-font-family: "Courier New"; */
 	-fx-background-color: #fff;

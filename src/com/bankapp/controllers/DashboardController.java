@@ -2,6 +2,7 @@ package com.bankapp.controllers;
 
 import com.bankapp.models.Transaction;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,22 +12,31 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 
 public class DashboardController {
 
 	@FXML
-	private Label userLabel;
+	private Label userLabel, balanceLabel, ibanLabel, holderLabel; // homepage labels
 	@FXML
-	private Label balanceLabel;
+	private AnchorPane transactionDetailsPane;
 	@FXML
-	private Label ibanLabel;
+	private BorderPane dashBoardPane;
+
 	@FXML
-	private Label holderLabel;
+	private Label transactionMerchant, transactionRef, detailsAmount;
+	@FXML
+	private Label postingDate, valueDate, ibanLabel1, bicLabel, categoryLabel, statusLabel;
+
+	@FXML
+	private boolean detailsVisible = false;
 	@FXML
 	private ImageView profileImage;
 
@@ -35,9 +45,7 @@ public class DashboardController {
 	private ListView<Transaction> transactionsList;
 
 	@FXML
-	private Button addMoneyButton;
-	@FXML
-	private Button transferButton;
+	private Button closeButton;
 
 	@FXML
 	private Region notifDot;
@@ -67,13 +75,12 @@ public class DashboardController {
 		}
 
 		// Sample transactions
-		transactionsList.getItems().addAll(
-				new Transaction("Ganymed Berlin GmbH", "2025-10-09", "885,69  €"),
+		transactionsList.getItems().addAll(new Transaction("Ganymed Berlin GmbH", "2025-10-09", "885,69  €"),
 				new Transaction("KAUFLAND", "2025-10-06", "-19,69 €"),
 				new Transaction("Payment to Amazon", "2025-10-4", "-50.00 €"),
 				new Transaction("ALDI", "2025-09-25", "-22.81 €"));
 
-		// rendering
+		// custom cell layout
 		transactionsList.setCellFactory(list -> new ListCell<Transaction>() {
 			@Override
 			protected void updateItem(Transaction tx, boolean empty) {
@@ -103,6 +110,73 @@ public class DashboardController {
 				}
 			}
 		});
+
+		// show transaction detail pane on Click
+		transactionsList.setOnMouseClicked(e -> {
+			Transaction selected = transactionsList.getSelectionModel().getSelectedItem();
+			if (selected != null) {
+				System.out.println("Clicked: " + selected.getTitle());
+				showTransactionDetails(selected);
+			}
+		});
+
+		// start hidden off-screen -animation
+		transactionDetailsPane.setTranslateY(800);
+		transactionDetailsPane.setVisible(false);
+		transactionDetailsPane.setMouseTransparent(false);
+	}
+
+	// method to display transaction details
+	public void showTransactionDetails(Transaction tr) {
+		if (tr == null)
+			return;
+
+		// populate - some hard coded data, later change to dynamic
+		transactionMerchant.setText(tr.getTitle());
+		detailsAmount.setText(tr.getAmount());
+		transactionRef.setText("Subscription Payment");
+		postingDate.setText("2025-10-09");
+		valueDate.setText("2025-10-10");
+		ibanLabel1.setText("DE12 3456 7890 1234 5678 90");
+		bicLabel.setText("BYLADEM1001");
+		categoryLabel.setText("Entertainment");
+		statusLabel.setText("Completed");
+
+		// hide dashboard
+		dashBoardPane.setMouseTransparent(true);
+		dashBoardPane.setOpacity(0);
+
+		// animate
+		if (!detailsVisible) {
+			transactionDetailsPane.setVisible(true);
+			transactionDetailsPane.toFront();
+
+			TranslateTransition slideUp = new TranslateTransition(Duration.millis(350), transactionDetailsPane);
+			slideUp.setFromY(800);
+			slideUp.setToY(0);
+			slideUp.play();
+			
+			detailsVisible = true;
+		}
+	}
+
+	// hide details pane
+	@FXML
+	private void closeDetails() {
+		if (detailsVisible) {
+			TranslateTransition slideDown = new TranslateTransition(Duration.millis(300), transactionDetailsPane);
+			slideDown.setFromY(0);
+			slideDown.setToY(800);
+			slideDown.setOnFinished(e -> {
+				transactionDetailsPane.setVisible(false);
+				// restore dashboardpane
+				dashBoardPane.setMouseTransparent(false);
+				dashBoardPane.setOpacity(1.0);
+			});
+			slideDown.play();
+			
+			detailsVisible = false;
+		}
 	}
 
 	// toggle notification red dot
@@ -110,13 +184,4 @@ public class DashboardController {
 		notifDot.setVisible(hasUnread);
 	}
 
-	@FXML
-	private void handleTransfer() {
-		System.out.println("Transfer button clicked!");
-	}
-
-	@FXML
-	private void handleAddMoney() {
-		System.out.println("Add Money button clicked!");
-	}
 }
